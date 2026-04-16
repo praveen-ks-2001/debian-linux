@@ -17,7 +17,4 @@
   EXPOSE $PORT
 
   ENTRYPOINT ["tini", "--"]
-  CMD ["/bin/bash", "-c", "\
-      echo \"export PS1='\\[\\033[01;31m\\]$USERNAME@debian\\[\\033[00m\\]:\\[\\033[01;34
-  m\\]\\w\\[\\033[00m\\]\\$ '\" >> /root/.bashrc && \
-      /usr/local/bin/ttyd -p $PORT -c $USERNAME:$PASSWORD /bin/bash"]
+  CMD ["/bin/bash", "-c", "echo \"export PS1='\\[\\033[01;31m\\]$USERNAME@debian\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '\" >> /root/.bashrc && /usr/local/bin/ttyd -p $PORT -c $USERNAME:$PASSWORD /bin/bash"]
