@@ -3,8 +3,10 @@
   ENV DEBIAN_FRONTEND=noninteractive                                                     
                                                                                          
   RUN apt-get update && \
-      apt-get install -y --no-install-recommends \                                       
-          tini wget curl git python3 python3-pip fastfetch ca-certificates && \
+      apt-get install -y --no-install-recommends \
+          tini wget curl git python3 python3-pip ca-certificates && \
+      wget -qO /tmp/fastfetch.deb https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb && \
+      dpkg -i /tmp/fastfetch.deb && rm /tmp/fastfetch.deb && \
       apt-get clean && rm -rf /var/lib/apt/lists/*
 
   RUN wget -qO /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64 && \
